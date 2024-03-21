@@ -5,16 +5,16 @@ version: "3.4"
 
 services:
   api:
-    container_name: LibreChat
+    container_name: dockerized-librechat3
     ports:
       - "${PORT}:${PORT}"
     
     depends_on:
       - mongodb
-    image: abdullahrafiq004/libre-chat:1.1
+    image: abdullahrafiq004/libre-chat:1.4
     
     restart: always
-    user: "${UID}:${GID}"
+   
     extra_hosts:
       - "host.docker.internal:host-gateway"
     environment:
@@ -25,11 +25,13 @@ services:
       - ./.env:/app/.env
       - ./images:/app/client/public/images
       - ./logs:/app/api/logs
+     
+      
   mongodb:
     container_name: chat-mongodb
     image: mongo
     restart: always
-    user: "${UID}:${GID}"
+   
     volumes:
       - ./data-node:/data/db
     command: mongod --noauth
@@ -37,7 +39,7 @@ services:
     container_name: chat-meilisearch
     image: getmeili/meilisearch:v1.6
     restart: always
-    user: "${UID}:${GID}"
+   
     environment:
       - MEILI_HOST=http://meilisearch:7700
       - MEILI_NO_ANALYTICS=true

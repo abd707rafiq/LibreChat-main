@@ -99,8 +99,5 @@
       "admin/",
       "packages/"
     ]
-  },
-  "dependencies": {
-    "librechat-data-provider": "^0.4.9"
   }
 }

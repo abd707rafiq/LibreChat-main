@@ -40,7 +40,7 @@ function ChatView({ index = 0 }) {
   return (
     <ChatContext.Provider value={chatHelpers}>
       <Presentation useSidePanel={mode === 'Advanced'}>
-        <button onClick={toggleMode} className="toggle-mode-button">
+        <button onClick={toggleMode} className="toggle-mode-button text-white">
           Switch to {mode === 'Normal' ? 'Advanced' : 'Normal'} Mode
         </button>
         {mode === 'Advanced' ? (
@@ -50,7 +50,7 @@ function ChatView({ index = 0 }) {
                 <Spinner className="opacity-0" />
               </div>
             ) : messagesTree && messagesTree.length !== 0 ? (
-              <MessagesView messagesTree={messagesTree} Header={<Header />} />
+              <MessagesView messagesTree={messagesTree} />
             ) : (
               <Landing Header={<Header />} />
             )}
