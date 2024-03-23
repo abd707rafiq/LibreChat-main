@@ -15,6 +15,8 @@ import FilesPanel from './Files/Panel';
 import Switcher from './Switcher';
 import { cn } from '~/utils';
 import Nav from './Nav';
+import store from '~/store';
+import { useRecoilValue } from 'recoil';
 
 interface SidePanelProps {
   defaultLayout?: number[] | undefined;
@@ -113,6 +115,15 @@ export default function SidePanel({
   const assistants = endpointsConfig?.[EModelEndpoint.assistants];
   const userProvidesKey = !!assistants?.userProvide;
   const keyProvided = userProvidesKey ? !!keyExpiry?.expiresAt : true;
+  const mode = useRecoilValue<boolean>(store.modeState);
+  if (mode !== true)
+  {return (
+    <div className="flex flex-col items-center justify-center space-y-4 p-4">
+      <button className="btn-primary">Chat with AI</button>
+      <button className="btn-primary">Fast Chat</button>
+      <button className="btn-primary">Secure Chat</button>
+    </div>
+  );}
 
   return (
     <>

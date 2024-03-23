@@ -17,7 +17,7 @@ import StopButton from './StopButton';
 import SendButton from './SendButton';
 import FileRow from './Files/FileRow';
 import store from '~/store';
-
+import { useRecoilValue } from 'recoil';
 const ChatForm = ({ index = 0 }) => {
   const submitButtonRef = useRef<HTMLButtonElement>(null);
   const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
